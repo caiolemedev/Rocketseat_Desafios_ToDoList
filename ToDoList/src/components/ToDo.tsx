@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { Task } from './Task'
 
 export function ToDo() {
 
@@ -15,6 +16,10 @@ export function ToDo() {
   function handleNewTaskChange() {
     event.target.setCustomValidity('')
     setNewTask(event.target.value)
+  }
+
+  function deleteTask(){
+
   }
 
   return (
@@ -33,7 +38,19 @@ export function ToDo() {
 
       <div className={'taskList'}>
         <p>
-          {tasks}
+          <span>Tarefas criadas 1</span>
+          <span>Tarefas concluídas 0</span>
+        </p>
+        <p>
+          {tasks.map(task => {
+            return (
+              <Task
+                key={task}
+                content={task}
+                onDeleteTask={deleteTask}
+              />
+            )
+          })}
         </p>
       </div>
 
