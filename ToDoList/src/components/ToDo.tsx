@@ -41,7 +41,6 @@ export function ToDo() {
           <span>Tarefas criadas 1</span>
           <span>Tarefas concluídas 0</span>
         </p>
-        <p>
           {tasks.map(task => {
             return (
               <Task
@@ -51,7 +50,6 @@ export function ToDo() {
               />
             )
           })}
-        </p>
       </div>
 
     </div>
