@@ -4,7 +4,7 @@ import { Task } from './Task'
 
 export function ToDo() {
 
-  const [tasks, setTasks] = useState(['task1', 'task2'])
+  const [tasks, setTasks] = useState([])
 
   const [newTask, setNewTask] = useState('')
 
@@ -18,8 +18,12 @@ export function ToDo() {
     setNewTask(event.target.value)
   }
 
-  function deleteTask(){
+  function deleteTask(taskToDelete){
+    const tasksWithoutDeletedOne = tasks.filter(task => {
+      return task !== taskToDelete
+    })
 
+    setTasks(tasksWithoutDeletedOne)
   }
 
   return (
@@ -38,7 +42,7 @@ export function ToDo() {
 
       <div className={'taskList'}>
         <p>
-          <span>Tarefas criadas 1</span>
+          <span>Tarefas criadas {tasks.length}</span>
           <span>Tarefas concluídas 0</span>
         </p>
           {tasks.map(task => {

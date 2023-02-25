@@ -2,7 +2,7 @@
 
 export function Task({content, onDeleteTask}) {
 
-  function handleDeleteTask(){
+  function handleDeleteTask() {
     console.log('deletar')
     onDeleteTask(content)
   }
