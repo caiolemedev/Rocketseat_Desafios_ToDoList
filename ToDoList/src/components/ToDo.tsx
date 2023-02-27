@@ -8,6 +8,8 @@ export function ToDo() {
 
   const [newTask, setNewTask] = useState('')
 
+  const [tasksDone, setTasksDone] = useState(0)
+
   function handleCreateNewTask() {
     event.preventDefault()
     setTasks([...tasks, newTask])
@@ -24,6 +26,10 @@ export function ToDo() {
     })
 
     setTasks(tasksWithoutDeletedOne)
+  }
+
+  function countDoneTasks(checked){
+
   }
 
   return (
@@ -43,7 +49,7 @@ export function ToDo() {
       <div className={'taskList'}>
         <p>
           <span>Tarefas criadas {tasks.length}</span>
-          <span>Tarefas concluídas 0</span>
+          <span>Tarefas concluídas {tasksDone}</span>
         </p>
           {tasks.map(task => {
             return (
@@ -51,6 +57,7 @@ export function ToDo() {
                 key={task}
                 content={task}
                 onDeleteTask={deleteTask}
+                checkedOrNotChecked={countDoneTasks}
               />
             )
           })}
