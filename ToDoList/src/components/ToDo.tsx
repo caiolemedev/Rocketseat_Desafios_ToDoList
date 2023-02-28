@@ -28,8 +28,11 @@ export function ToDo() {
     setTasks(tasksWithoutDeletedOne)
   }
 
-  function countDoneTasks(checked){
-
+  function countDoneTasks(){
+    let inputs = document.getElementsByTagName('input')
+    const doneTasks = Array.from(inputs).filter(
+      task => {return task.checked==true})
+    setTasksDone(doneTasks.length)
   }
 
   return (

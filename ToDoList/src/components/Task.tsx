@@ -4,21 +4,17 @@ import { useState } from 'react'
 export function Task({content, onDeleteTask, checkedOrNotChecked}) {
 
   function handleDeleteTask() {
-    console.log('deletar')
     onDeleteTask(content)
+    checkedOrNotChecked() //check deleting completed taks
   }
 
   function handleCountDoneTasks() {
-    console.log('contar')
     checkedOrNotChecked()
   }
 
-  console.log(document.getElementsByTagName('input'))
-
-
   return(
     <div>
-      <input type="checkbox" id={content} />
+      <input type="checkbox" id={content} onClick={handleCountDoneTasks} />
       <label for={content}>{content}</label>
       <button onClick={handleDeleteTask} title='Delete Task'>
         <Trash size={20} />
