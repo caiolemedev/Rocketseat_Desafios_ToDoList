@@ -4,8 +4,7 @@ import { useState } from 'react'
 export function Task({content, onDeleteTask, checkedOrNotChecked}) {
 
   function handleDeleteTask() {
-    onDeleteTask(content)
-    checkedOrNotChecked() //check deleting completed taks
+    onDeleteTask(content);
   }
 
   function handleCountDoneTasks() {
