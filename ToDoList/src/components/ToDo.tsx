@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 
 import { Task } from './Task'
 
@@ -10,29 +10,34 @@ export function ToDo() {
 
   const [tasksDone, setTasksDone] = useState(0)
 
-  function handleCreateNewTask() {
+  function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
     setTasks([...tasks, newTask])
+    setNewTask('')
   }
 
-  function handleNewTaskChange() {
+  function handleNewTaskChange(event: ChangeEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('')
     setNewTask(event.target.value)
   }
 
-  function deleteTask(taskToDelete){
+  function deleteTask(taskToDelete: string){
     const tasksWithoutDeletedOne = tasks.filter(task => {
       return task !== taskToDelete
     })
 
     setTasks(tasksWithoutDeletedOne)
+    console.log("deletar")
+    console.log(tasks)
+    countDoneTasks()
   }
 
   function countDoneTasks(){
-    let inputs = document.getElementsByTagName('input')
-    const doneTasks = Array.from(inputs).filter(
-      task => {return task.checked==true})
-    setTasksDone(doneTasks.length)
+    let inputs = Array.from(document.getElementsByTagName('input'))
+    setTasksDone(inputs.filter(input => {return input.checked==true}).length
+      )
+    console.log('contar')
+    console.log(tasks[1])
   }
 
   return (

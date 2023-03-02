@@ -1,7 +1,13 @@
 import { Trash } from 'phosphor-react'
 import { useState } from 'react'
 
-export function Task({content, onDeleteTask, checkedOrNotChecked}) {
+interface TaskProps {
+  content: string
+  onDeleteTask: (content: string) => void
+  checkedOrNotChecked: () => void
+}
+
+export function Task({content, onDeleteTask, checkedOrNotChecked}: TaskProps) {
 
   function handleDeleteTask() {
     onDeleteTask(content);
@@ -11,10 +17,11 @@ export function Task({content, onDeleteTask, checkedOrNotChecked}) {
     checkedOrNotChecked()
   }
 
+
   return(
     <div>
       <input type="checkbox" id={content} onClick={handleCountDoneTasks} />
-      <label for={content}>{content}</label>
+      <label htmlFor={content}>{content}</label>
       <button onClick={handleDeleteTask} title='Delete Task'>
         <Trash size={20} />
       </button>
