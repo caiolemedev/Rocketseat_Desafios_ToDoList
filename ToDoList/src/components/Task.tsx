@@ -5,18 +5,21 @@ interface TaskProps {
   content: string
   onDeleteTask: (content: string) => void
   checkedOrNotChecked: () => void
+  taskInputStatus: (content: string, checked: boolean) => void
+  checked: boolean
 }
 
-export function Task({content, onDeleteTask, checkedOrNotChecked}: TaskProps) {
+export function Task({content, onDeleteTask, checkedOrNotChecked, taskInputStatus, checked}: TaskProps) {
 
   function handleDeleteTask() {
     onDeleteTask(content);
   }
 
   function handleCountDoneTasks() {
-    checkedOrNotChecked()
+    checkedOrNotChecked();
+    checked == false ? checked=true : checked=false;
+    taskInputStatus(content, checked)
   }
-
 
   return(
     <div>

@@ -10,6 +10,8 @@ export function ToDo() {
 
   const [tasksDone, setTasksDone] = useState(0)
 
+  const [tasksInputStatus, setTasksInputStatus] = useState([])
+
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
     setTasks([...tasks, newTask])
@@ -28,16 +30,25 @@ export function ToDo() {
 
     setTasks(tasksWithoutDeletedOne)
     console.log("deletar")
-    console.log(tasks)
-    countDoneTasks()
   }
 
   function countDoneTasks(){
     let inputs = Array.from(document.getElementsByTagName('input'))
-    setTasksDone(inputs.filter(input => {return input.checked==true}).length
-      )
+    setTasksDone(inputs.filter(
+      input => {return input.checked==true}).length
+    )
     console.log('contar')
-    console.log(tasks[1])
+    console.log(tasks)
+    tasks.map(task => console.log(task))
+  }
+
+  function showTasksInputStatus(content: string, checked: boolean){
+    const toUpdate = tasks.indexOf(content)
+    const newInputStatus = tasksInputStatus
+    console.log(toUpdate)
+    newInputStatus[toUpdate] = checked
+    setTasksInputStatus(newInputStatus)
+    console.log(tasksInputStatus)
   }
 
   return (
@@ -66,6 +77,8 @@ export function ToDo() {
                 content={task}
                 onDeleteTask={deleteTask}
                 checkedOrNotChecked={countDoneTasks}
+                taskInputStatus={showTasksInputStatus}
+                checked={true}
               />
             )
           })}
