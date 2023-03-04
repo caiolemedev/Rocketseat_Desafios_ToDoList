@@ -4,26 +4,22 @@ import { useState } from 'react'
 interface TaskProps {
   content: string
   onDeleteTask: (content: string) => void
-  checkedOrNotChecked: () => void
-  taskInputStatus: (content: string, checked: boolean) => void
-  checked: boolean
+  updateCheckedTasks: (content: string) => void
 }
 
-export function Task({content, onDeleteTask, checkedOrNotChecked, taskInputStatus, checked}: TaskProps) {
+export function Task({content, onDeleteTask, updateCheckedTasks}: TaskProps) {
 
   function handleDeleteTask() {
     onDeleteTask(content);
   }
 
-  function handleCountDoneTasks() {
-    checkedOrNotChecked();
-    checked == false ? checked=true : checked=false;
-    taskInputStatus(content, checked)
+  function handleUpdateCheckedTasks() {
+    updateCheckedTasks(content);
   }
 
   return(
     <div>
-      <input type="checkbox" id={content} onClick={handleCountDoneTasks} />
+      <input type="checkbox" id={content} onClick={handleUpdateCheckedTasks} />
       <label htmlFor={content}>{content}</label>
       <button onClick={handleDeleteTask} title='Delete Task'>
         <Trash size={20} />

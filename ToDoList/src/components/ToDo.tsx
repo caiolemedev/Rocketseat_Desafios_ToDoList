@@ -8,13 +8,9 @@ export function ToDo() {
 
   const [newTask, setNewTask] = useState('')
 
-  const [tasksDone, setTasksDone] = useState(0)
-
-  const [tasksInputStatus, setTasksInputStatus] = useState([])
-
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
-    setTasks([...tasks, newTask])
+    setTasks([...tasks, {id: newTask, content: newTask, checked: false}])
     setNewTask('')
   }
 
@@ -25,31 +21,24 @@ export function ToDo() {
 
   function deleteTask(taskToDelete: string){
     const tasksWithoutDeletedOne = tasks.filter(task => {
-      return task !== taskToDelete
+      return task.id !== taskToDelete
     })
 
     setTasks(tasksWithoutDeletedOne)
     console.log("deletar")
   }
 
-  function countDoneTasks(){
-    let inputs = Array.from(document.getElementsByTagName('input'))
-    setTasksDone(inputs.filter(
-      input => {return input.checked==true}).length
-    )
-    console.log('contar')
-    console.log(tasks)
-    tasks.map(task => console.log(task))
+  function updateCheckedTasks(content: string){
+    const toUpdate = tasks.map(task => {
+      if(task.content === content)
+        {task.checked = !task.checked}
+      return task;
+      })
+    setTasks(toUpdate)
   }
 
-  function showTasksInputStatus(content: string, checked: boolean){
-    const toUpdate = tasks.indexOf(content)
-    const newInputStatus = tasksInputStatus
-    console.log(toUpdate)
-    newInputStatus[toUpdate] = checked
-    setTasksInputStatus(newInputStatus)
-    console.log(tasksInputStatus)
-  }
+  const tasksDone = tasks.filter(task => {return task.checked !== false})
+  console.log(tasksDone.length)
 
   return (
     <div>
@@ -73,12 +62,10 @@ export function ToDo() {
           {tasks.map(task => {
             return (
               <Task
-                key={task}
-                content={task}
+                key={task.id}
+                content={task.content}
                 onDeleteTask={deleteTask}
-                checkedOrNotChecked={countDoneTasks}
-                taskInputStatus={showTasksInputStatus}
-                checked={true}
+                updateCheckedTasks={updateCheckedTasks}
               />
             )
           })}
