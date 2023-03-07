@@ -1,7 +1,11 @@
 import styles from './Header.module.css'
+import { Rocket } from 'phosphor-react'
 
 export function Header () {
   return(
-    <h1>ToDo</h1>
+    <div>
+      <Rocket size={25} />
+      <h1>ToDo</h1>
+    </div>
   )
 }

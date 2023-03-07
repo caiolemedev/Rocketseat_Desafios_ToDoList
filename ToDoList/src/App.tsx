@@ -3,13 +3,14 @@ import { useState } from 'react'
 import { Header } from './components/Header'
 import { ToDo } from './components/ToDo'
 
-import './App.module.css'
+import './global.css'
+import styles from './App.module.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <Header/>
       <ToDo/>
     </div>
