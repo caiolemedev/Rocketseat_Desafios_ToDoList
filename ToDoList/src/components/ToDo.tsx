@@ -25,7 +25,6 @@ export function ToDo() {
     })
 
     setTasks(tasksWithoutDeletedOne)
-    console.log("deletar")
   }
 
   function updateCheckedTasks(content: string){
@@ -38,7 +37,6 @@ export function ToDo() {
   }
 
   const tasksDone = tasks.filter(task => {return task.checked !== false})
-  console.log(tasksDone.length)
 
   return (
     <div>
@@ -57,7 +55,7 @@ export function ToDo() {
       <div className={'taskList'}>
         <p>
           <span>Tarefas criadas {tasks.length}</span>
-          <span>Tarefas concluídas {tasksDone}</span>
+          <span>Tarefas concluídas {tasksDone.length}</span>
         </p>
           {tasks.map(task => {
             return (
