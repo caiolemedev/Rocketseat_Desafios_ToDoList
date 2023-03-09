@@ -3,9 +3,9 @@ import { Rocket } from 'phosphor-react'
 
 export function Header () {
   return(
-    <div>
+    <div className={styles.header}>
       <Rocket size={25} />
-      <h1>ToDo</h1>
+      <h1 className={styles.title}>ToDo</h1>
     </div>
   )
 }
