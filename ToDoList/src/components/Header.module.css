@@ -1,13 +1,17 @@
 .header {
+  width: 100%;
+  
+  background-color: var(--gray-700);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.2rem;
 }
 
 .title {
-  font-size: 4em;
+  font-size: 2em;
   font-weight: 900;
-  background: -webkit-linear-gradient(40deg, blue, purple);
+  background: -webkit-linear-gradient(45deg, var(--blue), var(--purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

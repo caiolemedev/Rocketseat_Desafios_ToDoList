@@ -1,8 +1,4 @@
 .wrapper {
-  max-width: 70rem;
-  margin: 2rem auto;
-  padding: 0 1rem;
-
   display: flex;
   gap: 2rem;
   align-items: center;
