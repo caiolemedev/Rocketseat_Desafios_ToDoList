@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-
 import { Task } from './Task'
+import styles from './ToDo.module.css'
 
 export function ToDo() {
 
@@ -40,7 +40,7 @@ export function ToDo() {
 
   return (
     <div>
-      <form onSubmit={handleCreateNewTask}>
+      <form className={styles.taskForm} onSubmit={handleCreateNewTask}>
         <textarea 
           name="newTask"
           placeholder='Adicione uma nova tarefa'

@@ -1,0 +1,17 @@
+.taskForm {
+  width: 75vw;
+  padding: 0.5rem;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.taskForm textarea {
+  background-color: var(--gray-500);
+  border: 1px solid var(--gray-500);
+  border-radius: 8px;
+  resize: none;
+  padding: 0.3rem;
+  width: 75%;
+}

@@ -1,11 +1,11 @@
 .header {
   width: 100%;
-  
   background-color: var(--gray-700);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.2rem;
+  padding: 3rem 0 2rem 0;
 }
 
 .title {
