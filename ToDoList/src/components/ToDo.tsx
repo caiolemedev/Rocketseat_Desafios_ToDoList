@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { Plus, PlusCircle } from 'phosphor-react'
 import { Task } from './Task'
 import styles from './ToDo.module.css'
 
@@ -48,7 +49,7 @@ export function ToDo() {
           onChange={handleNewTaskChange}
         />
         
-      <button type='submit'>Criar</button>
+      <button type='submit'>Criar <PlusCircle size={20} /> </button>
       </form>
 
 
