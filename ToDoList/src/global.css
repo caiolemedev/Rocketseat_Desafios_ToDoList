@@ -4,6 +4,7 @@
   --dark-blue: #1e6f9f;
   --purple: #5e60ce;
   --gray-700: #0d0d0d;
+  --gray-600: #1a1a1a;
   --gray-500: #262626;
   --gray-400: #333333;
   --gray-300: #808080;
@@ -24,7 +25,7 @@
 }
 
 body {
-  background: var(--gray-background);
+  background: var(--gray-600);
   color: var(--gray-100);
   -webkit-font-smoothing: antialiased;
 }

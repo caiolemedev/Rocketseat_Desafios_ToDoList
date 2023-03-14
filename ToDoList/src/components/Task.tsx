@@ -1,5 +1,6 @@
 import { Trash } from 'phosphor-react'
 import { useState } from 'react'
+import styles from './Task.module.css'
 
 interface TaskProps {
   content: string
@@ -18,7 +19,7 @@ export function Task({content, onDeleteTask, updateCheckedTasks}: TaskProps) {
   }
 
   return(
-    <div>
+    <div className={styles.task}>
       <input type="checkbox" id={content} onClick={handleUpdateCheckedTasks} />
       <label htmlFor={content}>{content}</label>
       <button onClick={handleDeleteTask} title='Delete Task'>

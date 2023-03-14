@@ -1,6 +1,6 @@
 .taskForm {
   width: 75vw;
-  padding: 0.5rem;
+  padding: 0.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,6 +34,8 @@
 }
 
 .taskList {
+  padding: 0rem 0.5rem;
+  margin-top: 1rem;
 }
 
 .taskInfo {
