@@ -53,11 +53,17 @@ export function ToDo() {
       </form>
 
 
-      <div className={'taskList'}>
-        <p>
-          <span>Tarefas criadas {tasks.length}</span>
-          <span>Tarefas concluídas {tasksDone.length}</span>
-        </p>
+      <div className={styles.taskList}>
+        <div className={styles.taskInfo}>
+          <p className={styles.taskCount}>
+            <span>Tarefas criadas</span>
+            <span>{tasks.length}</span>
+          </p>
+          <p className={styles.taskDone}>
+            <span>Tarefas concluídas</span>
+            <span>{tasksDone.length}</span>
+          </p>
+        </div>
           {tasks.map(task => {
             return (
               <Task

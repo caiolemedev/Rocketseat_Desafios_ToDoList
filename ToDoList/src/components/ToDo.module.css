@@ -32,3 +32,37 @@
 
   transition: background-color 0.1s;
 }
+
+.taskList {
+}
+
+.taskInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.taskInfo > p {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  gap: 0.5rem;
+}
+
+.taskCount span:nth-child(1) {
+  color: var(--blue);
+  background: none;
+  padding: 0;
+}
+
+.taskDone span:nth-child(1) {
+  color: var(--purple);
+  background: none;
+  padding: 0;
+}
+
+.taskInfo span {
+  line-height: 1rem;
+  padding: 0.2rem 0.7rem;
+  background: var(--gray-400);
+  border-radius: 999px;
+}
