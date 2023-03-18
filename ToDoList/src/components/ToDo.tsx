@@ -69,6 +69,7 @@ export function ToDo() {
               <Task
                 key={task.id}
                 content={task.content}
+                isChecked={task.checked}
                 onDeleteTask={deleteTask}
                 updateCheckedTasks={updateCheckedTasks}
               />
