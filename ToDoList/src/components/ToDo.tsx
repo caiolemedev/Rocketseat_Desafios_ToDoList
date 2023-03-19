@@ -3,6 +3,12 @@ import { Plus, PlusCircle } from 'phosphor-react'
 import { Task } from './Task'
 import styles from './ToDo.module.css'
 
+export interface NewTaskProps {
+  id: string;
+  content: string;
+  isChecked: boolean;
+}
+
 export function ToDo() {
 
   const [tasks, setTasks] = useState([])
@@ -38,9 +44,10 @@ export function ToDo() {
   }
 
   const tasksDone = tasks.filter(task => {return task.checked !== false})
+  const isNewTaskEmpty = newTask.length == 0
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <form className={styles.taskForm} onSubmit={handleCreateNewTask}>
         <textarea 
           name="newTask"
@@ -49,7 +56,12 @@ export function ToDo() {
           onChange={handleNewTaskChange}
         />
         
-      <button type='submit'>Criar <PlusCircle size={20} /> </button>
+      <button
+        type='submit'
+        disabled={isNewTaskEmpty}
+      >
+        Criar <PlusCircle size={20} />
+      </button>
       </form>
 
 

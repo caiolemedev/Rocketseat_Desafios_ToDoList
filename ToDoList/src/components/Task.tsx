@@ -2,8 +2,9 @@ import { Check, Trash } from 'phosphor-react'
 import { useState } from 'react'
 import styles from './Task.module.css'
 
-interface TaskProps {
-  content: string
+export interface TaskProps {
+  id: string;
+  content: string;
   isChecked: boolean;
   onDeleteTask: (content: string) => void
   updateCheckedTasks: (content: string) => void
@@ -33,7 +34,10 @@ export function Task({content, isChecked, onDeleteTask, updateCheckedTasks}: Tas
       >
           {content}
       </p>
-      <button onClick={handleDeleteTask} title='Delete Task'>
+      <button
+        className={styles.delete}
+        onClick={handleDeleteTask} title='Delete Task'
+      >
         <Trash size={20} />
       </button>
     </div>

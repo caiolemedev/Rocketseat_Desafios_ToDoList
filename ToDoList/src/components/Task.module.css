@@ -1,10 +1,10 @@
 .task {
   margin-top: 1rem;
+  min-height: 3rem;
   background-color: var(--gray-500);
   padding: 0.3rem 1rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
 
   border: 1px solid var(--gray-400);
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
@@ -17,7 +17,12 @@
   height: 1rem;
   pointer: cursor;
   border-radius: 50%;
-  margin-right: 0.5rem;
+  margin-right: 0.7rem;
+}
+
+.checkbox:hover,
+.checkboxChecked:hover {
+  cursor: pointer;
 }
 
 .checkbox {
@@ -34,12 +39,25 @@
   background-color: var(--purple);
 }
 
-.taskText {
-  cursor: pointer;
-  display: flex;
+.taskText,
+.taskTextChecked {
+  flex: 1;
+  text-align: justify;
+  margin-right: 0.5rem;
 }
 
 .taskTextChecked {
   text-decoration: line-through;
   color: var(--gray-300);
+}
+
+.delete {
+  background: none;
+  border: none;
+  color: var(--gray-300);
+}
+
+.delete:hover {
+  color: red;
+  cursor: pointer;
 }
