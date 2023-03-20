@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { Plus, PlusCircle } from 'phosphor-react'
+import { Notepad, PlusCircle } from 'phosphor-react'
 import { Task } from './Task'
 import styles from './ToDo.module.css'
 
@@ -45,6 +45,7 @@ export function ToDo() {
 
   const tasksDone = tasks.filter(task => {return task.checked !== false})
   const isNewTaskEmpty = newTask.length == 0
+  const isTaskListEmpty = tasks.length == 0
 
   return (
     <div className={styles.wrapper}>
@@ -76,19 +77,27 @@ export function ToDo() {
             <span>{tasksDone.length}</span>
           </p>
         </div>
-          {tasks.map(task => {
-            return (
-              <Task
-                key={task.id}
-                content={task.content}
-                isChecked={task.checked}
-                onDeleteTask={deleteTask}
-                updateCheckedTasks={updateCheckedTasks}
-              />
-            )
-          })}
+          {isTaskListEmpty ? (
+            <div className={styles.blankTaskList}>
+              <Notepad size={70}/>
+              <p>Nenhuma tarefa</p>
+            </div>
+          ) : (
+            <div>
+              {tasks.map(task => {
+                return (
+                  <Task
+                    key={task.id}
+                    content={task.content}
+                    isChecked={task.checked}
+                    onDeleteTask={deleteTask}
+                    updateCheckedTasks={updateCheckedTasks}
+                  />
+                )
+              })}
+            </div>
+          )}
       </div>
-
     </div>
   )
 }
