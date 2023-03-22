@@ -15,9 +15,20 @@ export function ToDo() {
 
   const [newTask, setNewTask] = useState('')
 
+  function sortByChecked(tasksToSort: NewTaskProps[]) {
+    const tasksSorted: NewTaskProps[] = tasksToSort.sort((a, b) => {
+      if (a.isChecked === false) return -1;
+      if (a.isChecked === true) return 1;
+      return 0;
+    });
+    return tasksSorted;
+  }
+
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
-    setTasks([...tasks, {id: newTask, content: newTask, checked: false}])
+    const newTaskArray: NewTaskProps[] = [...tasks, {id: newTask, content: newTask, isChecked: false}]
+
+    setTasks(sortByChecked(newTaskArray))
     setNewTask('')
   }
 
@@ -31,19 +42,19 @@ export function ToDo() {
       return task.id !== taskToDelete
     })
 
-    setTasks(tasksWithoutDeletedOne)
+    setTasks(sortByChecked(tasksWithoutDeletedOne))
   }
 
   function updateCheckedTasks(content: string){
-    const toUpdate = tasks.map(task => {
+    const toUpdate: NewTaskProps[] = tasks.map(task => {
       if(task.content === content)
-        {task.checked = !task.checked}
+        {task.isChecked = !task.isChecked}
       return task;
       })
-    setTasks(toUpdate)
+    setTasks(sortByChecked(toUpdate))
   }
 
-  const tasksDone = tasks.filter(task => {return task.checked !== false})
+  const tasksDone = tasks.filter(task => {return task.isChecked !== false})
   const isNewTaskEmpty = newTask.length == 0
   const isTaskListEmpty = tasks.length == 0
 
@@ -90,7 +101,7 @@ export function ToDo() {
                   <Task
                     key={task.id}
                     content={task.content}
-                    isChecked={task.checked}
+                    isChecked={task.isChecked}
                     onDeleteTask={deleteTask}
                     updateCheckedTasks={updateCheckedTasks}
                   />
