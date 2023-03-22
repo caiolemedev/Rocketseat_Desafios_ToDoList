@@ -80,7 +80,8 @@ export function ToDo() {
           {isTaskListEmpty ? (
             <div className={styles.blankTaskList}>
               <Notepad size={70}/>
-              <p>Nenhuma tarefa</p>
+              <p>Você ainda não tem tarefas cadastradas</p>
+              <p>Crie tarefas e organize seus itens a fazer</p>
             </div>
           ) : (
             <div>
