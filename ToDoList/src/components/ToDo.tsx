@@ -26,9 +26,21 @@ export function ToDo() {
 
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
-    const newTaskArray: NewTaskProps[] = [...tasks, {id: newTask, content: newTask, isChecked: false}]
 
-    setTasks(sortByChecked(newTaskArray))
+    var newTaskArray: NewTaskProps[] = []
+    if (tasks.length == 0) {
+      newTaskArray = [...tasks, {id: newTask, content: newTask, isChecked: false}]
+      setTasks(sortByChecked(newTaskArray))
+    } else {
+      {tasks.map(task => {
+        if (newTask == task.id) {
+          window.alert('Duplicado!')
+        } else {
+          newTaskArray = [...tasks, {id: newTask, content: newTask, isChecked: false}]
+          setTasks(sortByChecked(newTaskArray))
+        }
+      })}
+    }
     setNewTask('')
   }
 
