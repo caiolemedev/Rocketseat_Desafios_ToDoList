@@ -3,21 +3,21 @@ import { useState } from 'react'
 import styles from './Task.module.css'
 
 export interface TaskProps {
-  id: string;
+  id: number;
   content: string;
   isChecked: boolean;
-  onDeleteTask: (content: string) => void
-  updateCheckedTasks: (content: string) => void
+  onDeleteTask: (id: number) => void
+  updateCheckedTasks: (id: number) => void
 }
 
-export function Task({content, isChecked, onDeleteTask, updateCheckedTasks}: TaskProps) {
+export function Task({id, content, isChecked, onDeleteTask, updateCheckedTasks}: TaskProps) {
 
   function handleDeleteTask() {
-    onDeleteTask(content);
+    onDeleteTask(id);
   }
 
   function handleUpdateCheckedTasks() {
-    updateCheckedTasks(content);
+    updateCheckedTasks(id);
   }
 
   return(

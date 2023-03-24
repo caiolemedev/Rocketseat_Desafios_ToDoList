@@ -4,7 +4,7 @@ import { Task } from './Task'
 import styles from './ToDo.module.css'
 
 export interface NewTaskProps {
-  id: string;
+  id: number;
   content: string;
   isChecked: boolean;
 }
@@ -27,21 +27,12 @@ export function ToDo() {
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
 
-    var newTaskArray: NewTaskProps[] = []
-    if (tasks.length == 0) {
-      newTaskArray = [...tasks, {id: newTask, content: newTask, isChecked: false}]
-      setTasks(sortByChecked(newTaskArray))
-    } else {
-      {tasks.map(task => {
-        if (newTask == task.id) {
-          window.alert('Duplicado!')
-        } else {
-          newTaskArray = [...tasks, {id: newTask, content: newTask, isChecked: false}]
-          setTasks(sortByChecked(newTaskArray))
-        }
-      })}
-    }
+    const newTaskArray: NewTaskProps[] = [...tasks, {id: tasks.length, content: newTask, isChecked: false}]
+
+    setTasks(sortByChecked(newTaskArray))
     setNewTask('')
+
+    console.log(tasks)
   }
 
   function handleNewTaskChange(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -49,7 +40,7 @@ export function ToDo() {
     setNewTask(event.target.value)
   }
 
-  function deleteTask(taskToDelete: string){
+  function deleteTask(taskToDelete: number){
     const tasksWithoutDeletedOne = tasks.filter(task => {
       return task.id !== taskToDelete
     })
@@ -57,9 +48,9 @@ export function ToDo() {
     setTasks(sortByChecked(tasksWithoutDeletedOne))
   }
 
-  function updateCheckedTasks(content: string){
+  function updateCheckedTasks(taskToCheck: number){
     const toUpdate: NewTaskProps[] = tasks.map(task => {
-      if(task.content === content)
+      if(task.id === taskToCheck)
         {task.isChecked = !task.isChecked}
       return task;
       })
@@ -112,6 +103,7 @@ export function ToDo() {
                 return (
                   <Task
                     key={task.id}
+                    id={task.id}
                     content={task.content}
                     isChecked={task.isChecked}
                     onDeleteTask={deleteTask}
