@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { Notepad, PlusCircle } from 'phosphor-react'
+import { v4 as uuidv4 } from 'uuid';
 import { Task } from './Task'
 import styles from './ToDo.module.css'
 
@@ -11,7 +12,7 @@ export interface NewTaskProps {
 
 export function ToDo() {
 
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState<NewTaskProps[]>([])
 
   const [newTask, setNewTask] = useState('')
 
@@ -26,13 +27,10 @@ export function ToDo() {
 
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
-
-    const newTaskArray: NewTaskProps[] = [...tasks, {id: tasks.length, content: newTask, isChecked: false}]
+    const newTaskArray = [...tasks, {id: uuidv4(), content: newTask, isChecked: false}]
 
     setTasks(sortByChecked(newTaskArray))
     setNewTask('')
-
-    console.log(tasks)
   }
 
   function handleNewTaskChange(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -69,6 +67,7 @@ export function ToDo() {
           placeholder='Adicione uma nova tarefa'
           value={newTask}
           onChange={handleNewTaskChange}
+          autoFocus
         />
         
       <button
